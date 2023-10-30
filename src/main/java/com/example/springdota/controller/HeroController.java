@@ -19,18 +19,20 @@ public class HeroController {
     }
 
     @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public Hero saveHero(@RequestBody Hero hero) {
         return heroService.add(hero);
     }
 
     @PutMapping("/{id}")
-    public Hero replaceHero(@PathVariable Long id, @RequestBody Hero hero) {
-        return heroService.replace(id, hero);
+    @RequestMapping(method = RequestMethod.PUT, )
+    public Hero updateHero(@PathVariable Long id, @RequestBody Hero hero) {
+        return heroService.update(id, hero);
     }
 
     @PatchMapping("/{id}")
-    public Hero updateHero(@PathVariable Long id, @RequestBody String name) {
-        return heroService.change(id, name);
+    public Hero patchHero(@PathVariable Long id, @RequestBody String name) {
+        return heroService.patch(id, name);
     }
 
     @DeleteMapping(("/{id}"))

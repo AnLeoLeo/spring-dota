@@ -2,9 +2,11 @@ package com.example.springdota.service;
 
 import com.example.springdota.component.Hero;
 import com.example.springdota.dao.HeroDAO;
-import jakarta.persistence.EntityExistsException;
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -27,18 +29,24 @@ public class HeroService {
         return heroDAO.save(hero);
     }
 
-    public Hero replace(Long id, Hero hero) {
-        heroDAO.deleteById(id);
+    public Hero update(Long id, Hero hero) {
+        if (!hero.getId().equals(id)) {
+            throw new RuntimeException("Не совпадает id в запросе с id героя");
+        }
         return heroDAO.save(hero);
     }
 
-    public Hero change(Long id, String name) {
+    public Hero patch(Long id, String name) {
         Hero hero = get(id);
         hero.setName(name);
         return heroDAO.save(hero);
     }
 
+    @Transactional
     public void delete(Long id) {
+        if (find(id).isEmpty()) {
+            throw new EntityExistsException("Герой с указанным id не найден.");
+        }
         heroDAO.deleteById(id);
     }
 

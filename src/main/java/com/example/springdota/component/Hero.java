@@ -1,19 +1,15 @@
 package com.example.springdota.component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Scope;
 
 @Entity
 @Getter
 @Setter
-@Scope("prototype")
 public class Hero {
     @Id
-    @GeneratedValue
     private Long id;
     private String name;
 
