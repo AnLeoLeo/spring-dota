@@ -1,12 +1,10 @@
 package com.example.springdota.controller;
 
 import com.example.springdota.component.Hero;
-import com.example.springdota.component.HeroListResponse;
 import com.example.springdota.service.HeroService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/heroes")
@@ -18,11 +16,11 @@ public class HeroController {
     }
 
     @GetMapping()
-    public HeroListResponse getList(
-            @RequestParam(required = false) Optional<Integer> page,
-            @RequestParam(required = false) Optional<Integer> limit
+    public Page<Hero> getList(
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "10") int limit
     ) {
-        return new HeroListResponse(heroService.getList(PageRequest.of(page.orElse(0), limit.orElse(10))));
+        return heroService.getList(PageRequest.of(page, Math.min(limit, 1000)));
     }
 
     @GetMapping("/{id}")
