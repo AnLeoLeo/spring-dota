@@ -1,16 +1,28 @@
 package com.example.springdota.controller;
 
 import com.example.springdota.component.Hero;
+import com.example.springdota.component.HeroListResponse;
 import com.example.springdota.service.HeroService;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/api/hero")
+@RequestMapping("/api/heroes")
 public class HeroController {
     private final HeroService heroService;
 
     public HeroController(HeroService heroService) {
         this.heroService = heroService;
+    }
+
+    @GetMapping()
+    public HeroListResponse getList(
+            @RequestParam(required = false) Optional<Integer> page,
+            @RequestParam(required = false) Optional<Integer> limit
+    ) {
+        return new HeroListResponse(heroService.getList(PageRequest.of(page.orElse(0), limit.orElse(10))));
     }
 
     @GetMapping("/{id}")
@@ -19,13 +31,11 @@ public class HeroController {
     }
 
     @PostMapping
-    @RequestMapping(method = RequestMethod.POST)
     public Hero saveHero(@RequestBody Hero hero) {
         return heroService.add(hero);
     }
 
-    @PutMapping("/{id}")
-    @RequestMapping(method = RequestMethod.PUT, )
+    @RequestMapping(method = RequestMethod.PUT, path = "/{id}")
     public Hero updateHero(@PathVariable Long id, @RequestBody Hero hero) {
         return heroService.update(id, hero);
     }

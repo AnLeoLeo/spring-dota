@@ -5,9 +5,11 @@ import com.example.springdota.dao.HeroDAO;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +22,10 @@ public class HeroService {
 
     public Hero get(Long id) {
         return find(id).orElseThrow(() -> new EntityNotFoundException("Герой с указанным id не найден"));
+    }
+
+    public List<Hero> getList(Pageable pagination) {
+        return heroDAO.findAll(pagination).toList();
     }
 
     public Hero add(Hero hero) {
