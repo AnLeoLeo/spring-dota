@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,7 +21,7 @@ public class HeroService {
     }
 
     public Hero get(Long id) {
-        return find(id).orElseThrow(() -> new EntityNotFoundException("Герой с указанным id не найден"));
+        return find(id).orElseThrow(() -> new EntityNotFoundException("Герой с указанным id не найден."));
     }
 
     public Page<Hero> getList(Pageable pagination) {
