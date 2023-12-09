@@ -1,6 +1,6 @@
 package com.example.api.dto;
 
-import com.example.api.component.Tactic;
+import com.example.api.entity.Tactic;
 import lombok.Getter;
 import lombok.Setter;
 

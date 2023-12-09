@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.component.Player;
+import com.example.api.entity.Player;
 import com.example.api.service.PlayerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

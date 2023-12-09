@@ -1,7 +1,7 @@
 package com.example.api.dto;
 
-import com.example.api.component.Card;
-import com.example.api.component.Tactic;
+import com.example.api.entity.Card;
+import com.example.api.entity.Tactic;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,13 +12,14 @@ import java.util.List;
 public class TacticDTO {
     private Long id;
     private String name;
-    private List<Card> cards;
+    private List<CardDTO> cards;
 
     public static TacticDTO fromTacticAndCards(Tactic tactic, List<Card> tacticCards) {
         TacticDTO tacticDTO = new TacticDTO();
         tacticDTO.setId(tactic.getId());
         tacticDTO.setName(tactic.getName());
-        tacticDTO.setCards(tacticCards);
+        List<CardDTO> list = tacticCards.stream().map(CardDTO::fromCard).toList();
+        tacticDTO.setCards(list);
         return tacticDTO;
     }
 }

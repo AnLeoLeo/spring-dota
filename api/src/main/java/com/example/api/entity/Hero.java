@@ -1,4 +1,4 @@
-package com.example.api.component;
+package com.example.api.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

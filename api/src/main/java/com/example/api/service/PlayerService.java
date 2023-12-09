@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.component.Player;
+import com.example.api.entity.Player;
 import com.example.api.dao.PlayerDAO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,7 +1,7 @@
 package com.example.api.service;
 
-import com.example.api.component.Card;
-import com.example.api.component.Tactic;
+import com.example.api.entity.Card;
+import com.example.api.entity.Tactic;
 import com.example.api.dao.CardDAO;
 import com.example.api.dto.CardDTO;
 import org.springframework.stereotype.Component;

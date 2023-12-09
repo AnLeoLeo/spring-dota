@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.component.Hero;
+import com.example.api.entity.Hero;
 import com.example.api.dao.HeroDAO;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;

@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.component.Team;
+import com.example.api.entity.Team;
 import com.example.api.dto.TeamDTO;
 import com.example.api.dto.TeamDetailsDTO;
 import com.example.api.service.TeamService;

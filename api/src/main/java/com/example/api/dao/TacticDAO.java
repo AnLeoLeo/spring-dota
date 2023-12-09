@@ -1,6 +1,6 @@
 package com.example.api.dao;
 
-import com.example.api.component.Tactic;
+import com.example.api.entity.Tactic;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

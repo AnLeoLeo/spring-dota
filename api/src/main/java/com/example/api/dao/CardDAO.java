@@ -1,6 +1,6 @@
 package com.example.api.dao;
 
-import com.example.api.component.Card;
+import com.example.api.entity.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;

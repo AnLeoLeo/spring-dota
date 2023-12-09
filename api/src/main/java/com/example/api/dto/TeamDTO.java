@@ -1,7 +1,7 @@
 package com.example.api.dto;
 
-import com.example.api.component.Tactic;
-import com.example.api.component.Team;
+import com.example.api.entity.Tactic;
+import com.example.api.entity.Team;
 import lombok.Data;
 
 @Data

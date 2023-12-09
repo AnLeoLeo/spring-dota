@@ -1,11 +1,10 @@
-package com.example.api.component;
+package com.example.api.entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,6 +14,8 @@ public class Tactic {
     @GeneratedValue
     private Long id;
     private String name;
+    @OneToMany(mappedBy = "tactic")
+    private List<Card> cardList;
 
     public Tactic() {
     }

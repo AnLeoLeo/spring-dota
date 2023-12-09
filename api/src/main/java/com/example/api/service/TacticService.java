@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.component.Tactic;
+import com.example.api.entity.Tactic;
 import com.example.api.dao.TacticDAO;
 import com.example.api.dto.CardDTO;
 import com.example.api.dto.TacticDTO;
@@ -29,8 +29,10 @@ public class TacticService {
         return find(id).orElseThrow(() -> new EntityNotFoundException("Тактика с указанным id не найдена."));
     }
 
+    @Transactional
     public TacticDTO getWithCards(Long id) {
-        return TacticDTO.fromTacticAndCards(get(id), cardService.getByTactic(id));
+        Tactic tactic = get(id);
+        return TacticDTO.fromTacticAndCards(tactic, tactic.getCardList());
     }
 
     public Page<Tactic> getList(Pageable pagination) {

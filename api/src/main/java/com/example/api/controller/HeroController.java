@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.component.Hero;
+import com.example.api.entity.Hero;
 import com.example.api.service.HeroService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

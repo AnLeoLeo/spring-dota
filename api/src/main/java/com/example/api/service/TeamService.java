@@ -1,7 +1,7 @@
 package com.example.api.service;
 
-import com.example.api.component.Tactic;
-import com.example.api.component.Team;
+import com.example.api.entity.Tactic;
+import com.example.api.entity.Team;
 import com.example.api.dao.TeamDAO;
 import com.example.api.dto.TeamDTO;
 import com.example.api.dto.TeamDetailsDTO;
@@ -24,7 +24,7 @@ public class TeamService {
     public TeamDetailsDTO getDetails(Long id) {
         Team team = find(id).orElseThrow(() -> new EntityNotFoundException("Команда с указанным id не найдена."));
         if (team.getTactic() == null) {
-            return TeamDetailsDTO.fromTeamAndTactic(team, null);
+            return TeamDetailsDTO.fromTeam(team);
         } else {
             return TeamDetailsDTO.fromTeamAndTactic(team, tacticService.getWithCards(team.getTactic().getId()));
         }

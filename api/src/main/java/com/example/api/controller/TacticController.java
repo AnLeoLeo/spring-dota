@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.component.Tactic;
+import com.example.api.entity.Tactic;
 import com.example.api.dto.CardDTO;
 import com.example.api.dto.TacticDTO;
 import com.example.api.dto.TacticNameDTO;
