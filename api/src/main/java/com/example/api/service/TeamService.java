@@ -7,8 +7,7 @@ import com.example.api.dto.TeamDTO;
 import com.example.api.dto.TeamDetailsDTO;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.Optional;
 
 @Service

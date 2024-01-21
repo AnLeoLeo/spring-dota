@@ -6,7 +6,7 @@ import com.example.api.dao.CardDAO;
 import com.example.api.dto.CardDTO;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Component

@@ -2,8 +2,7 @@ package com.example.api.service;
 
 import com.example.api.entity.Hero;
 import com.example.api.dao.HeroDAO;
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
