@@ -5,12 +5,14 @@ import com.example.api.dto.CardDTO;
 import com.example.api.dto.TacticDTO;
 import com.example.api.dto.TacticNameDTO;
 import com.example.api.service.TacticService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tactics")
+@Slf4j
 public class TacticController {
     private final TacticService tacticService;
 
@@ -41,6 +43,7 @@ public class TacticController {
 
     @GetMapping("/{id}")
     public TacticDTO get(@PathVariable Long id) {
+        log.info("get tactic");
         return tacticService.getWithCards(id);
     }
 
