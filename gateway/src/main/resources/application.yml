@@ -18,3 +18,7 @@ spring:
           uri: lb://api
           predicates:
             - Path=/api/**
+        - id: replay
+          uri: lb://replay
+          predicates:
+            - Path=/replay/**
