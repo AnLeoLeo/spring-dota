@@ -24,3 +24,9 @@ eureka:
     register-with-eureka: true
 server:
   port: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "prometheus" ]
