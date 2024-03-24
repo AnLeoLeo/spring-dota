@@ -14,6 +14,7 @@
         <port>${logstash-port}</port>
         <layout class="net.logstash.logback.layout.LogstashLayout"/>
     </appender>
+
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="logstash"/>
