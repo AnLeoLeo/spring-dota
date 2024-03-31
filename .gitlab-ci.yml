@@ -20,7 +20,7 @@ build-logging-starter:
     - mvn clean package
   artifacts:
     paths: 
-    - target/logging-starter-*.jar
+    - logging-starter/target/logging-starter-*.jar
 
 build:
   stage: build
