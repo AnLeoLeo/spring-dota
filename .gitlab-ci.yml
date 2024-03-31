@@ -29,4 +29,7 @@ build:
     - maven
   script:
     - mvn install:install-file -Dfile=logging-starter/target/logging-starter-1.0.0.jar -DgroupId=com.example  -DartifactId=logging-starter -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true
-    - mvn clean compile
+    - mvn clean package
+  artifacts:
+    paths: 
+    - "**/target/*.jar"
