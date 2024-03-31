@@ -19,7 +19,7 @@ build-logging-starter:
     - cd logging-starter
     - mvn clean package
     - mkdir -p ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
-    - cp logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
+    - cp ${CI_PROJECT_DIR}/logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
   artifacts:
     paths: 
     - logging-starter/target/logging-starter-*.jar
