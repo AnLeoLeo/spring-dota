@@ -29,6 +29,6 @@ build:
     - maven
   script:
     - ls -la logging-starter/target
-    - mkdir -p ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
-    - cp ${CI_PROJECT_DIR}/logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter/
+    - mkdir -p ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter/1.0.0/
+    - cp ${CI_PROJECT_DIR}/logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter/1.0.0/
     - mvn clean compile
