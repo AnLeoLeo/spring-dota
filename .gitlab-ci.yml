@@ -6,7 +6,7 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2"
 
 cache:
-  key: $CI_COMMIT_SHA
+#  key: $CI_COMMIT_SHA
   paths:
   - ${CI_PROJECT_DIR}/.m2
 
@@ -18,8 +18,8 @@ build-logging-starter:
   script:
     - cd logging-starter
     - mvn clean package
-    - mkdir -p ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
-    - cp ${CI_PROJECT_DIR}/logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
+#    - mkdir -p ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
+#    - cp ${CI_PROJECT_DIR}/logging-starter/target/logging-starter-*.jar ${CI_PROJECT_DIR}/.m2/repository/com/example/logging-starter
   artifacts:
     paths: 
     - logging-starter/target/logging-starter-*.jar
@@ -30,4 +30,6 @@ build:
     - java21
     - maven
   script:
+    - ls -la
+    - ls -la logging-starter
     - mvn clean compile
