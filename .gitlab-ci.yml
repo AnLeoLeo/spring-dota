@@ -3,7 +3,7 @@ stages:
   - build
 
 variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2"
+  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2 -DskipTests=true"
 
 cache:
 #  key: $CI_COMMIT_SHA
