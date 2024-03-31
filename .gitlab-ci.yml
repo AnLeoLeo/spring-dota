@@ -19,7 +19,8 @@ build-logging-starter:
     - cd logging-starter
     - mvn clean package
   artifacts:
-    paths: target/logging-starter-*.jar
+    paths: 
+    - target/logging-starter-*.jar
 
 build:
   stage: build
