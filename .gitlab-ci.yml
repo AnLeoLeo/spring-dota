@@ -1,5 +1,4 @@
 stages:
-  - build-logging-starter
   - build
   - deploy
 
@@ -11,40 +10,21 @@ cache:
   paths:
   - ${CI_PROJECT_DIR}/.m2
 
-build-logging-starter:
-  stage: build-logging-starter
-  tags:
-    - java21
-    - maven
-  script:
-    - cd logging-starter
-    - mvn clean package
-  artifacts:
-    paths: 
-    - logging-starter/target/logging-starter-*.jar
-
 build:
   stage: build
   tags:
     - java21
     - maven
   script:
-    - mvn install:install-file -Dfile=logging-starter/target/logging-starter-1.0.0.jar -DgroupId=com.example  -DartifactId=logging-starter -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true
+    - cd logging-starter
+    - mvn clean package install
+    - cd ../
     - mvn clean package
   artifacts:
     paths: 
     - "**/target/*.jar"
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  before_script:
-    - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
-    - eval $(ssh-agent -s)
-    - mkdir -p ~/.ssh
-    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-add ~/.ssh/id_rsa
-    - ssh-keyscan ${DEV_HOST} >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
+deploy-job:
+  stage: deploy
   script:
     - scp **/target/*.jar ${DEV_USER}@${DEV_HOST}:${DEV_APP_PATH}/
