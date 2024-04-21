@@ -3,12 +3,12 @@ stages:
   - deploy
 
 variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2 -DskipTests=true"
+  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/ -DskipTests=true"
 
 cache:
 #  key: $CI_COMMIT_SHA
   paths:
-  - ${CI_PROJECT_DIR}/.m2
+  - ${CI_PROJECT_DIR}/.m2/repository/
 
 build:
   stage: build
@@ -17,14 +17,19 @@ build:
     - maven
   script:
     - cd logging-starter
-    - mvn clean package install
+    - mvn clean install
     - cd ../
     - mvn clean package
   artifacts:
     paths: 
-    - "**/target/*.jar"
+      - "**/target/*.jar"
+    expire_in: 1 days
 
 deploy-job:
   stage: deploy
   script:
     - scp **/target/*.jar ${DEV_USER}@${DEV_HOST}:${DEV_APP_PATH}/
+    - ssh ${DEV_USER}@${DEV_HOST} "systemctl stop api.service && systemctl start api.service"
+    - ssh ${DEV_USER}@${DEV_HOST} "systemctl stop gateway.service && systemctl start gateway.service"
+    - ssh ${DEV_USER}@${DEV_HOST} "systemctl stop discovery.service && systemctl start discovery.service"
+    - ssh ${DEV_USER}@${DEV_HOST} "systemctl stop replay.service && systemctl start replay.service"
