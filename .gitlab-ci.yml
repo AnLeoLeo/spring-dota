@@ -8,7 +8,7 @@ variables:
 cache:
 #  key: $CI_COMMIT_SHA
   paths:
-  - ${CI_PROJECT_DIR}/.m2
+  - .m2/repository/
 
 build:
   stage: build
