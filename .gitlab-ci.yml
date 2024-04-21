@@ -7,7 +7,7 @@ variables:
 
 cache:
   paths:
-    - ${CI_PROJECT_DIR}/.m2/
+    - ${CI_PROJECT_DIR}/.m2/repository/
 
 build:
   stage: build
