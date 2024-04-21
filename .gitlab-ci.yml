@@ -6,9 +6,8 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/ -DskipTests=true"
 
 cache:
-#  key: $CI_COMMIT_SHA
   paths:
-  - .m2/repository/
+  - ./.m2/repository/
 
 build:
   stage: build
@@ -16,9 +15,7 @@ build:
     - java21
     - maven
   script:
-    - cd logging-starter
-    - mvn clean install
-    - cd ../
+    - mvn clean install -f logging-starter/pom.xml
     - mvn clean package
   artifacts:
     paths: 
