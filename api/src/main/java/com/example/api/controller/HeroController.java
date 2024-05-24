@@ -4,6 +4,7 @@ import com.example.api.entity.Hero;
 import com.example.api.service.HeroService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class HeroController {
     }
 
     @GetMapping()
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public Page<Hero> getList(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "10") int limit
